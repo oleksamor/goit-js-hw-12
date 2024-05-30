@@ -25,7 +25,7 @@ export function createMarkup(arr) {
                      alt = "${tags}"
                      />
                  
-                 <div class = "container">
+                 <div class = "wrapper">
                       <ul class ="wrapper-info ">
                             <li class = "likes">
                             <p class ="title">Likes</p>
