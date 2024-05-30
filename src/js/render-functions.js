@@ -62,9 +62,6 @@ export function createMarkup(arr) {
   }
 }
 
- 
-
-
 export function showLoading(element) {
   element.style.display = 'block';
 }
