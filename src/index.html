@@ -12,17 +12,19 @@
     />
   </head>
   <body>
-    <form class="forma" name="search__form">
-      <div class="search-input">
-        <input
-          class="input-title"
-          type="text"
-          name="search__images"
-          placeholder="Search images"
-        />
-        <button class="button button-text" type="submit">Search</button>
-      </div>
-    </form>
+    <div class="container">
+      <form class="forma" name="search__form">
+        <div class="search-input">
+          <input
+            class="input-title"
+            type="text"
+            name="search__images"
+            placeholder="Search images"
+          />
+          <button class="button button-text" type="submit">Search</button>
+        </div>
+      </form>
+    </div>
 
     <div class="css-loader hidden">
       <span class="loader"></span>
@@ -33,7 +35,9 @@
     </div>
 
     <div class="load-btn">
-      <button class="load-more-btn btn-hidden" type="button">Load more</button>
+      <button class="load-more-btn btn-hidden button-text" type="button">
+        Load more
+      </button>
     </div>
 
     <script type="module" src="./main.js"></script>

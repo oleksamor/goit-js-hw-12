@@ -14,9 +14,10 @@ const loader = document.querySelector('.css-loader');
 const gallery = document.querySelector('.gallery');
 const loadBtn = document.querySelector('.load-more-btn');
 
+
 form.addEventListener("submit", handleSubmit);
 
-let page;
+let page = 1;
 
 hideLoading(loader);
 
@@ -30,8 +31,7 @@ async function handleSubmit(event) {
   console.log(search__images.value); 
   
   sessionStorage.setItem('text', (search__images.value.trim()));
-  page = 1;
-
+ 
   if ((search__images.value) === '') {
     form.reset();
     loadBtn.classList.replace('load-more', 'btn-hidden');
@@ -73,13 +73,12 @@ async function handleSubmit(event) {
 
     const totalPages = Math.ceil(data.totalHits / 15);
 
-    console.log(totalPages, page);
-
-    if (page < totalPages) {
+     if (page < totalPages) {
       loadBtn.classList.replace('btn-hidden', 'load-more');
     }
     else
-    {   alert("We're sorry, but you've reached the end of search results.");
+     {
+       alert("We're sorry, but you've reached the end of search results."); return;
      }
   } catch (error) {
     form.reset();
@@ -100,27 +99,18 @@ loadBtn.addEventListener('click', loadMore);
 
 async function loadMore() {
   loadBtn.disabled = true;
-
+ page += 1;
   try {
     const text = sessionStorage.getItem('text');
-    page += 1;
+
+   
     const data = await objectSearch(text, page);
 
     gallery.insertAdjacentHTML('beforeend', createMarkup(data.hits));
 
     loadBtn.disabled = false;
-
-    if (data.hits.length < 15) {
-      loadBtn.classList.add('btn-hidden');
-    }
-
-    lightbox.refresh();
-
-
-
-    const item = document.querySelector('.gallery-item');
-    console.log(item);
-    const itemHeight = item.getBoundingClientRect().height;
+const item = document.querySelector('.gallery-item');
+ const itemHeight = item.getBoundingClientRect().height;
     window.scrollBy({
       left: 0,
       top: itemHeight * 2,
@@ -129,6 +119,13 @@ async function loadMore() {
   } catch (error) {
     alert(error.message);
   }
+
+    if (data.hits.length < 15) {
+      loadBtn.classList.add('btn-hidden');
+    }
+
+    lightbox.refresh();
+
 }
 
 const lightbox = new SimpleLightbox('.gallery a', {

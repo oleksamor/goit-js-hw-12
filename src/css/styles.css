@@ -80,6 +80,13 @@ form {
   margin-bottom: 32px;
 }
 
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin-bottom: 20px; */
+}
+
 .search-input {
   display: flex;
   width: 371px;
@@ -127,6 +134,7 @@ border: none;
 
 .button:hover {
   background: #6C8CFF;
+  transform: scale(1.05);
 }
 
 .button-text {
@@ -259,6 +267,27 @@ button:focus-visible {
   visibility: hidden;
 }
 
+.load-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .load-more {
 visibility: visible;
+display: inline-block;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  text-align: center;
+  border: none;
+  border-radius: 8px;
+  background: #4E75FF;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.load-more:hover {
+  background-color: #6C8CFF;
+  transform: scale(1.03);
 }
