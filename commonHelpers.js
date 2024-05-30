@@ -7,7 +7,7 @@ import{a as b,i as d,S as w}from"./assets/vendor-09d7c26e.js";(function(){const 
                      alt = "${r}"
                      />
                  
-                 <div class = "container">
+                 <div class = "wrapper">
                       <ul class ="wrapper-info ">
                             <li class = "likes">
                             <p class ="title">Likes</p>
