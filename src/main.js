@@ -16,7 +16,8 @@ const loadBtn = document.querySelector('.load-more-btn');
 
 form.addEventListener("submit", handleSubmit);
 
-let page = 1;
+let page = 1500;
+
 hideLoading(loader);
 
 async function handleSubmit(event) {
@@ -28,10 +29,10 @@ async function handleSubmit(event) {
 
   console.log(search__images.value); 
   
-  sessionStorage.setItem('text', (search__images));
+  sessionStorage.setItem('text', (search__images.value.trim()));
   page = 1;
 
-  if ((search__form) === '') {
+  if ((search__images.value) === '') {
     form.reset();
     loadBtn.classList.replace('load-more', 'btn-hidden');
     iziToast.error({
@@ -112,12 +113,14 @@ async function loadMore() {
 
     lightbox.refresh();
 
+
+    
     const item = document.querySelector('.gallery-item');
     console.log(item);
     const itemHeight = item.getBoundingClientRect().height;
     window.scrollBy({
       left: 0,
-      top: itemHeight * 3,
+      top: itemHeight * 2,
       behavior: 'smooth',
     });
   } catch (error) {
