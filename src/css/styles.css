@@ -130,6 +130,12 @@ input {
    border-radius: 8px;
   background-color: #4E75FF;
 border: none;
+color: #FFFFFF;
+font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.04em;
 }
 
 .button:hover {
@@ -137,20 +143,18 @@ border: none;
   transform: scale(1.05);
 }
 
-.button-text {
-  font-family: Montserrat;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: 0.04em;
-  color: #FFFFFF;
-}
-
 .gallery {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
 
+}
+
+.wrapper {
+display: flex;
+column-gap: 2px;
+justify-content: center;
+  align-items: center;
 }
 
 .gallery-item {
@@ -178,9 +182,20 @@ border: none;
   transform: scale(1.05);
 }
 
+/* .parameters {
+ 
+   justify-content: center;
+}
+
+
+.title {
+  margin: 0px 5px;
+} */
+
 .info {
   color: #000000;
   font-size: 16px;
+ 
 }
 
 input {
