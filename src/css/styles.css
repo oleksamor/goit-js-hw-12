@@ -67,13 +67,6 @@ h1 {
   filter: drop-shadow(0 0 2em #f7df1eaa);
 }
 
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
 form {
   width: 1440px;
   margin-top: 36px;
@@ -182,20 +175,26 @@ justify-content: center;
   transform: scale(1.05);
 }
 
-/* .parameters {
- 
-   justify-content: center;
+.wrapper-info {
+  display: flex;
+  padding: 4px 25px 4px 20px;
+  text-align: center;
 }
 
+.likes {
+  margin-right: 28px;
+}
 
-.title {
-  margin: 0px 5px;
-} */
+.views {
+  margin-right: 27px;
+}
 
-.info {
-  color: #000000;
-  font-size: 16px;
- 
+.comments {
+  margin-right: 32px;
+}
+
+.downloads {
+  margin-right: 25px;
 }
 
 input {

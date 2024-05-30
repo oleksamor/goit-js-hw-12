@@ -24,24 +24,29 @@ export function createMarkup(arr) {
                      src = "${webformatURL}"
                      alt = "${tags}"
                      />
-                 </a>
-                 <div class = "wrapper">
-                 <div class = "parameters">
-                 <span class ="title">Likes</span>
-                 <span class = "info">${likes}</span>
-                 </div>
-                  <div class = "parameters">
-                 <span class ="title">Views</span>
-                 <span class = "info">${views}</span>
-                 </div>
-                  <div class = "parameters">
-                 <span class ="title">Comments</span>
-                 <span class = "info">${comments}</span>
-                 </div>
-                  <div class = "parameters">
-                 <span class ="title">Downloads</span>
-                 <span class = "info">${downloads}</span>
-                 </div></div>
+                 
+                 <div class = "container">
+                      <ul class ="wrapper-info ">
+                            <li class = "likes">
+                            <p class ="title">Likes</p>
+                            <p class = "info">${likes}</p>
+                            </li>
+                            <li class = "views">
+                            <p class ="title">Views</p>
+                            <p class = "info">${views}</p>
+                            </li>
+                            <li class = "comments">
+                            <p class ="title">Comments</p>
+                            <p class = "info">${comments}</p>
+                            </li>
+                            <li class = "downloads">
+                            <p class ="title">Downloads</p>
+                            <p class = "info">${downloads}</p>
+                            </li>
+                    
+                        </ul>
+                    </div>
+                    </a>
             </li>`
     )
     .join('');
