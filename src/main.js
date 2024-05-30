@@ -1,3 +1,5 @@
+
+import axios from 'axios';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
@@ -7,24 +9,29 @@ import { createMarkup } from './js/render-functions';
 import { showLoading } from './js/render-functions';
 import { hideLoading } from './js/render-functions';
 
-const form = document.querySelector('.form');
+const form = document.querySelector(".forma");
 const loader = document.querySelector('.css-loader');
 const gallery = document.querySelector('.gallery');
 const loadBtn = document.querySelector('.load-more-btn');
 
+form.addEventListener("submit", handleSubmit);
+
 let page = 1;
 hideLoading(loader);
 
-form.addEventListener('submit', handelSubmit);
-
-async function handelSubmit(event) {
+async function handleSubmit(event) {
   event.preventDefault();
   gallery.innerHTML = '';
-  const dataSearch = event.currentTarget.elements.data.value.trim();
-  sessionStorage.setItem('text', dataSearch);
+  console.log(event.target.elements);
+
+  const {search__images} = event.target.elements;
+
+  console.log(search__images.value); 
+  
+  sessionStorage.setItem('text', (search__images));
   page = 1;
 
-  if (dataSearch === '') {
+  if ((search__form) === '') {
     form.reset();
     loadBtn.classList.replace('load-more', 'btn-hidden');
     iziToast.error({
@@ -41,14 +48,17 @@ async function handelSubmit(event) {
   showLoading(loader);
 
   try {
-    const data = await objectSearch(dataSearch, page);
+    const data = await objectSearch((search__images.value), page);
+
     console.log(data);
+    
     if (data.hits.length === 0) {
       form.reset();
       iziToast.error({
         message:
           'Sorry, there are no images matching your search query. Please try again!',
-        position: 'bottomRight',
+       position: 'bottomRight',
+
         messageColor: 'white',
         backgroundColor: 'red',
         progressBarColor: 'black',

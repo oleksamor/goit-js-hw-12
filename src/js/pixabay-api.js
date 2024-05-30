@@ -4,7 +4,7 @@ const BASE_URL = 'https://pixabay.com/api/';
 const KEY = '43441081-c9c9daac9af91d4227dda2db1';
 
 export async function objectSearch(text, page) {
-  const response = await axios(BASE_URL, {
+  const {data} = await axios(BASE_URL, {
     params: {
       key: KEY,
       q: text,
@@ -16,5 +16,5 @@ export async function objectSearch(text, page) {
     },
   });
 
-  return response.data;
+  return data;
 }

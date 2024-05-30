@@ -1,5 +1,12 @@
-export function createMarkup(array) {
-  return array
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
+import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
+
+let lightbox;
+
+export function createMarkup(arr) {
+  return arr
     .map(
       ({
         tags,
@@ -9,8 +16,8 @@ export function createMarkup(array) {
         downloads,
         webformatURL,
         largeImageURL,
-      }) =>
-        `<li class="gallery-item">
+      }) => `
+        <li class="gallery-item">
                 <a class="gallery-link" href="${largeImageURL}" >
                    <img
                      class = "gallery-image"
@@ -38,7 +45,20 @@ export function createMarkup(array) {
             </li>`
     )
     .join('');
+  
+   if (!lightbox) {
+    lightbox = new SimpleLightbox('.gallery a', {
+      caption: true,
+      captionsData: 'alt',
+      captionDelay: 250,
+    });
+  } else {
+    lightbox.refresh();
+  }
 }
+
+ 
+
 
 export function showLoading(element) {
   element.style.display = 'block';
