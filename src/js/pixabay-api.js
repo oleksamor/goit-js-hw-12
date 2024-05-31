@@ -3,7 +3,7 @@ import axios from 'axios';
 const BASE_URL = 'https://pixabay.com/api/';
 const KEY = '43441081-c9c9daac9af91d4227dda2db1';
 
-export async function objectSearch(text, page) {
+export async function objectSearch(text, page = 1) {
   const {data} = await axios(BASE_URL, {
     params: {
       key: KEY,

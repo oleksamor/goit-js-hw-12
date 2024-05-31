@@ -16,13 +16,16 @@ const loadBtn = document.querySelector('.load-more-btn');
 
 
 form.addEventListener("submit", handleSubmit);
+loadBtn.addEventListener('click', loadMore);
 
 let page = 1;
 let textInput = '';
 
 hideLoading(loader);
-
+// ===================================================
 async function handleSubmit(event) {
+
+  
   event.preventDefault();
   gallery.innerHTML = '';
   const {search__images} = event.target.elements;
@@ -49,8 +52,6 @@ async function handleSubmit(event) {
   try {
     const data = await objectSearch((textInput), page);
 
-    console.log(data.hits.length);
-    
     if (data.hits.length === 0) {
       form.reset();
       iziToast.error({
@@ -76,7 +77,8 @@ async function handleSubmit(event) {
     }
     else
      {
-       alert("We're sorry, but you've reached the end of search results."); return;
+       alert("We're sorry, but you've reached the end of search results.");
+       return;
      }
   } catch (error) {
     form.reset();
@@ -93,18 +95,29 @@ async function handleSubmit(event) {
   }
 }
 
-loadBtn.addEventListener('click', loadMore);
+
+
+// ===================================================
 
 async function loadMore() {
   loadBtn.disabled = true;
- page += 1;
+  page += 1;
+  
   try {
-       const data = await objectSearch(textInput, page);
+    const data = await objectSearch(textInput, page);
+       gallery.insertAdjacentHTML('beforeend', createMarkup(data.hits));
+    lightbox.refresh();
 
-    gallery.insertAdjacentHTML('beforeend', createMarkup(data.hits));
+     const totalPages = Math.ceil(data.totalHits / 15);
 
-    loadBtn.disabled = false;
-    
+     if (page = totalPages) {
+      loadBtn.classList.replace('load-more', 'btn-hidden');
+       page = 1;
+      //  alert ("We're sorry, but you've reached the end of search results");
+     } 
+
+ 
+   
 const item = document.querySelector('.gallery-item');
  const itemHeight = item.getBoundingClientRect().height;
     window.scrollBy({
@@ -115,15 +128,6 @@ const item = document.querySelector('.gallery-item');
   } catch (error) {
     alert(error.message);
   }
-
-    if (data.hits.length < 15) {
-      loadBtn.classList.add('btn-hidden');
-      
-    }
-  
-lightbox.refresh();
-    
-
 }
 
 const lightbox = new SimpleLightbox('.gallery a', {
