@@ -24,8 +24,6 @@ hideLoading(loader);
 async function handleSubmit(event) {
   event.preventDefault();
   gallery.innerHTML = '';
-  console.log(event.target.elements);
-
   const {search__images} = event.target.elements;
 
   console.log(search__images.value); 
@@ -37,7 +35,7 @@ async function handleSubmit(event) {
     loadBtn.classList.replace('load-more', 'btn-hidden');
     iziToast.error({
       message:
-        'Sorry, there are no images matching your search query. Please try again!',
+        'Sorry, field must not be empty. Please try again!',
       position: 'bottomRight',
       messageColor: 'white',
       backgroundColor: 'red',
