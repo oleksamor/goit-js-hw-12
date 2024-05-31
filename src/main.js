@@ -22,7 +22,7 @@ let page = 1;
 let textInput = '';
 
 hideLoading(loader);
-// showLoading(loader);
+
 
 async function handleSubmit(event) {
 page = 1;

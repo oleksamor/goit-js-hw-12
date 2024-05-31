@@ -295,7 +295,9 @@ display: inline-block;
   background-color: #6C8CFF;
   transform: scale(1.03);
 }
-
+.css-loader {
+  align-items: center;
+}
 .loader {
   transform: translateZ(1px);
 }
