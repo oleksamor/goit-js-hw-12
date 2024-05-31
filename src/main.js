@@ -18,6 +18,7 @@ const loadBtn = document.querySelector('.load-more-btn');
 form.addEventListener("submit", handleSubmit);
 
 let page = 1;
+let textInput = '';
 
 hideLoading(loader);
 
@@ -26,10 +27,9 @@ async function handleSubmit(event) {
   gallery.innerHTML = '';
   const {search__images} = event.target.elements;
 
-  const textInput = search__images.value.trim();
+  textInput = search__images.value.trim();
   
-  // sessionStorage.setItem('text', ());
- 
+  
   if ((textInput) === '') {
     form.reset();
     loadBtn.classList.replace('load-more', 'btn-hidden');
@@ -49,7 +49,7 @@ async function handleSubmit(event) {
   try {
     const data = await objectSearch((textInput), page);
 
-    console.log(data);
+    console.log(data.hits.length);
     
     if (data.hits.length === 0) {
       form.reset();
@@ -99,14 +99,12 @@ async function loadMore() {
   loadBtn.disabled = true;
  page += 1;
   try {
-    const text = sessionStorage.getItem('text');
-
-   
-    const data = await objectSearch(text, page);
+       const data = await objectSearch(textInput, page);
 
     gallery.insertAdjacentHTML('beforeend', createMarkup(data.hits));
 
     loadBtn.disabled = false;
+    
 const item = document.querySelector('.gallery-item');
  const itemHeight = item.getBoundingClientRect().height;
     window.scrollBy({
@@ -120,9 +118,11 @@ const item = document.querySelector('.gallery-item');
 
     if (data.hits.length < 15) {
       loadBtn.classList.add('btn-hidden');
+      
     }
-
-    lightbox.refresh();
+  
+lightbox.refresh();
+    
 
 }
 
