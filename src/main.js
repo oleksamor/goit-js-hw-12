@@ -26,11 +26,11 @@ async function handleSubmit(event) {
   gallery.innerHTML = '';
   const {search__images} = event.target.elements;
 
-  console.log(search__images.value); 
+  const textInput = search__images.value.trim();
   
-  sessionStorage.setItem('text', (search__images.value.trim()));
+  // sessionStorage.setItem('text', ());
  
-  if ((search__images.value) === '') {
+  if ((textInput) === '') {
     form.reset();
     loadBtn.classList.replace('load-more', 'btn-hidden');
     iziToast.error({
@@ -47,7 +47,7 @@ async function handleSubmit(event) {
   showLoading(loader);
 
   try {
-    const data = await objectSearch((search__images.value), page);
+    const data = await objectSearch((textInput), page);
 
     console.log(data);
     
