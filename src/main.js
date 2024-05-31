@@ -22,9 +22,9 @@ let page = 1;
 let textInput = '';
 
 hideLoading(loader);
-// ===================================================
-async function handleSubmit(event) {
 
+async function handleSubmit(event) {
+page = 1;
   
   event.preventDefault();
   gallery.innerHTML = '';
@@ -96,24 +96,20 @@ async function handleSubmit(event) {
 }
 
 
-
-// ===================================================
-
 async function loadMore() {
-  loadBtn.disabled = true;
   page += 1;
-  
+ 
   try {
     const data = await objectSearch(textInput, page);
+
        gallery.insertAdjacentHTML('beforeend', createMarkup(data.hits));
     lightbox.refresh();
 
      const totalPages = Math.ceil(data.totalHits / 15);
 
-     if (page = totalPages) {
+     if (page >= totalPages) {
       loadBtn.classList.replace('load-more', 'btn-hidden');
-       page = 1;
-      //  alert ("We're sorry, but you've reached the end of search results");
+         alert("We're sorry, but you've reached the end of search results");
      } 
 
  
