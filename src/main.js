@@ -108,9 +108,18 @@ async function loadMore() {
 
      const totalPages = Math.ceil(data.totalHits / 15);
 
-     if (page >= totalPages) {
-      loadBtn.classList.replace('load-more', 'btn-hidden');
-         alert("We're sorry, but you've reached the end of search results");
+     if (page === totalPages) {
+       loadBtn.classList.replace('load-more', 'btn-hidden');
+       
+         iziToast.show({
+      message:
+        'Sorry, but you have reached the end of search results',
+      position: 'bottomRight',
+      messageColor: 'white',
+      backgroundColor: 'blue',
+      progressBarColor: 'black',
+    });
+       
      } 
 
  
