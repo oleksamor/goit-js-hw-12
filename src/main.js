@@ -114,10 +114,10 @@ async function loadMore() {
          iziToast.show({
       message:
         'Sorry, but you have reached the end of search results',
-      position: 'bottomRight',
-      messageColor: 'white',
-      backgroundColor: 'blue',
-      progressBarColor: 'black',
+      position: 'center',
+      messageColor: 'yellow',
+      backgroundColor: 'green',
+      progressBarColor: '',
     });
        
      } 
